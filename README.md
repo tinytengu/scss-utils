@@ -2,6 +2,6 @@
 
 Utilities for SCSS.
 
-- breakpoints - media-query breakpoints
-- colors - colors utilities
-- utils - useful utility stuff
+- [breakpoints](https://github.com/tinytengu/scss-utils/blob/main/src/_breakpoints_.scss) - media-query breakpoints
+- [colors](https://github.com/tinytengu/scss-utils/blob/main/src/_colors.scss) - colors utilities
+- [utils](https://github.com/tinytengu/scss-utils/blob/main/src/_utils.scss) - useful utility stuff
