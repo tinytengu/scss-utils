@@ -1,0 +1,55 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
+
+// All list elements to lower case
+@function all-to-lower($list) {
+  $new-list: $list;
+  @each $name in $new-list {
+    $idx: list.index($new-list, $name);
+    $new-list: list.set-nth($new-list, $idx, string.to-lower-case($name));
+  }
+  @return $new-list;
+}
+
+// All list elements to upper case
+@function all-to-upper($list) {
+  $new-list: $list;
+  @each $name in $new-list {
+    $idx: list.index($new-list, $name);
+    $new-list: list.set-nth($new-list, $idx, string.to-upper-case($name));
+  }
+  @return $new-list;
+}
+
+// Replace string index
+@function replace-idx($string, $idx, $replace) {
+  @return "#{string.slice($string, 0, $idx - 1)}#{$replace}#{string.slice($string, $idx + 1)}";
+}
+
+// Replace substring in a string
+@function replace-sub($string, $search, $replace) {
+  $idx: string.index($string, $search);
+  @if $idx == null {
+    @return $string;
+  }
+  @return replace-idx($string, $idx, $replace);
+}
+
+// Replace all substrings in all string in a list
+@function replace-all($list, $search, $replace) {
+  $new-list: $list;
+  @each $substring in $new-list {
+    $idx: list.index($new-list, $substring);
+    $new-list: list.set-nth(
+      $new-list,
+      $idx,
+      replace-sub($substring, $search, $replace)
+    );
+  }
+  @return $new-list;
+}
+
+@function contains($value, $substring) {
+  @return string.index("#{$value}", $substring) != null;
+}
