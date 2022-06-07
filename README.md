@@ -61,7 +61,7 @@ Now feel free to use anything from `scss-utils` using `su` namespace, e.g:
 .row {
   width: 100vw;
 
-  @include md {
+  @include su.md {
     width: 500px;
   }
 }
@@ -69,7 +69,7 @@ Now feel free to use anything from `scss-utils` using `su` namespace, e.g:
 .column {
   height: 100vh;
 
-  @include breakpoint(xxl) {
+  @include su.breakpoint(xxl) {
     height: 50vh;
   }
 }
